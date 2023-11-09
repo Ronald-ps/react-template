@@ -17,5 +17,9 @@
     "id": 1,
     "name": "ronald",
     "email": "ronald.p@gmail.com"
+  },
+  "login": {
+    "email": "ronald.teste@gmail.com",
+    "password": "senha"
   }
 }
