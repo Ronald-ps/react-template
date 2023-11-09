@@ -1,14 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import { DefaultPagesContainer } from "./DefaultPagesContainer";
+import { LoginPage } from "./Login";
+import { ProtectedRoute } from "@components/auth/ProtectedRoute";
 
 export const router = createBrowserRouter([
   {
+    path: "/login",
+    element: <LoginPage />,
+  },
+  {
     path: "/",
-    element: <DefaultPagesContainer />,
-    children: [
-      { path: "/", element: <div>Teste</div> },
-      { path: "/about", element: <div>about</div> },
-    ]
+    element: <ProtectedRoute />,
+    children: [{ path: "/", element: <DefaultPagesContainer /> }],
   },
 ]);

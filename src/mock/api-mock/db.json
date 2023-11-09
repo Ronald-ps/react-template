@@ -1,6 +1,21 @@
 {
   "users": [
-    {"id": 1, "name": "ronald", "email": "ronald.p@gmail.com"},
-    {"id": 2, "name": "usuario", "email": "usuario@gmail.com"}
-  ]
+    {
+      "id": 1,
+      "name": "ronald",
+      "email": "ronald.p@gmail.com",
+      "password": "password"
+    },
+    {
+      "id": 2,
+      "name": "usuario",
+      "email": "usuario@gmail.com",
+      "password": "passwordDois"
+    }
+  ],
+  "whoami": {
+    "id": 1,
+    "name": "ronald",
+    "email": "ronald.p@gmail.com"
+  }
 }
