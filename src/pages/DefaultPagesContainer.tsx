@@ -3,20 +3,18 @@ import {
   AppShell,
   Box,
   Burger,
-  Container,
   Group,
   NavLink,
-  Skeleton,
   Text,
-  Title,
 } from "@mantine/core";
-import { IconAdOff } from "@tabler/icons-react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { ROUTER_PATHS } from "./routers";
 
 export const DefaultPagesContainer = () => {
   const [opened, { toggle }] = useDisclosure();
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <AppShell
@@ -33,8 +31,9 @@ export const DefaultPagesContainer = () => {
         </Group>
       </AppShell.Header>
       <AppShell.Navbar p="md">
-        <NavLink label="Página inicial" onClick={() => navigate("/")} />
-        <NavLink label="Documentos" onClick={() => navigate("/")} />
+        <NavLink label="Página inicial" onClick={() => navigate(ROUTER_PATHS.HOME)} active={location.pathname === ROUTER_PATHS.HOME}/>
+        <NavLink label="Minhas contribuições" onClick={() => navigate(ROUTER_PATHS.CONTRIBUTIONS)} active={location.pathname === ROUTER_PATHS.CONTRIBUTIONS}/>
+        <NavLink label="Documentos" onClick={() => navigate("/")} active={location.pathname ===  "/docs"}/>
       </AppShell.Navbar>
       <AppShell.Main>
         <Outlet />

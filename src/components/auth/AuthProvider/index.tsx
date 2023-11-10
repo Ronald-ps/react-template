@@ -59,8 +59,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
+interface AuthContextValueNotNull extends AuthContextValue{
+  loggedUser: LoggedUser;
+  setLoggedUser: (user: LoggedUser | null) => void;
+}
 // TODO: Fast refresh only works when a file only exports components.
 // Use a new file to share constants or functions between components
-export const useAuth = () => {
-  return useContext(AuthContext);
+export const useAuth = (): AuthContextValueNotNull => {
+  const context = useContext(AuthContext);
+  if (!context.loggedUser || !context.setLoggedUser) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context as AuthContextValueNotNull;
 };
