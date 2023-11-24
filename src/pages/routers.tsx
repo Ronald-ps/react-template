@@ -5,6 +5,7 @@ import { LoginPage } from "./LoginPage";
 import { HomePage } from "./HomePage";
 import { ProtectedRoute } from "@components/auth/ProtectedRoute";
 import { ContributionsListPage } from "./ContributionsListPage";
+import { NewContributionPage } from "./NewContributionPage";
 
 export const ROUTER_PATHS = {
   LOGIN: "/login",
@@ -25,8 +26,11 @@ export const router = createBrowserRouter([
         path: "/",
         element: <DefaultPagesContainer />,
         children: [
-          { path: ROUTER_PATHS.HOME, element: <HomePage /> },
-          { path: ROUTER_PATHS.CONTRIBUTIONS, element: <ContributionsListPage /> },
+          { path: ROUTER_PATHS.HOME, element: <NewContributionPage /> },
+          {
+            path: ROUTER_PATHS.CONTRIBUTIONS,
+            element: <ContributionsListPage />,
+          },
         ],
       },
     ],
