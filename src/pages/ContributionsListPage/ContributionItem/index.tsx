@@ -8,11 +8,15 @@ export const ContributionItem = (props: ContributionItemProps) => {
   return (
     <Paper withBorder p="20px" shadow="xs">
       <Box>
-        <Text>{props.contribution.title}</Text>
-        <Text>{props.contribution.date}</Text>
+        <Text c="dimmed" mb="8px">
+          {props.contribution.title}
+        </Text>
+        <Text c="dimmed" mb="16px">
+          {new Date(props.contribution.date).toLocaleString("pt-BR")}
+        </Text>
       </Box>
       <Box>
-        <Text>
+        <Text lineClamp={3} c="dimmed">
           {props.contribution.description}
         </Text>
       </Box>
