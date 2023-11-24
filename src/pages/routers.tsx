@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import { DefaultPagesContainer } from "./DefaultPagesContainer";
-import { LoginPage } from "./Login";
-import { HomePage } from "./Home";
+import { LoginPage } from "./LoginPage";
+import { HomePage } from "./HomePage";
 import { ProtectedRoute } from "@components/auth/ProtectedRoute";
-import { ContributionsListPage } from "./ContributionsList";
+import { ContributionsListPage } from "./ContributionsListPage";
 
 export const ROUTER_PATHS = {
   LOGIN: "/login",
