@@ -68,7 +68,7 @@ interface AuthContextValueNotNull extends AuthContextValue{
 export const useAuth = (): AuthContextValueNotNull => {
   const context = useContext(AuthContext);
   if (!context.loggedUser || !context.setLoggedUser) {
-    throw new Error("useAuth must be used within an AuthProvider");
+    throw new Error("authProvider.loggedUser or authProvider.setLoggedUser is inexistent.");
   }
   return context as AuthContextValueNotNull;
 };
