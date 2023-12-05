@@ -1,8 +1,9 @@
 import jsonServer from "json-server";
+import cors from "cors";
+
 const server = jsonServer.create();
 const routers = jsonServer.router("src/mock/api-mock/db.json");
 const middlewares = jsonServer.defaults();
-import cors from "cors";
 
 server.use(middlewares);
 server.use(
@@ -14,6 +15,7 @@ server.use(
   })
 );
 server.options("*", cors());
+server.use(jsonServer.bodyParser);
 
 const ENDPOINTS = {
   users: "/users",
