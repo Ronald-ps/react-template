@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 
 import { DefaultPagesContainer } from "./DefaultPagesContainer";
 import { LoginPage } from "./LoginPage";
-import { HomePage } from "./HomePage";
 import { ProtectedRoute } from "@components/auth/ProtectedRoute";
 import { ContributionsListPage } from "./ContributionsListPage";
 import { NewContributionPage } from "./NewContributionPage";
