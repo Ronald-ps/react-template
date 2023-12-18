@@ -1,15 +1,15 @@
 import { router, ROUTER_PATHS } from "@pages/routers";
-import { matchRoutes } from "react-router-dom";
+import { matchRoutes, useNavigate } from "react-router-dom";
 
 /**
  * @description Retorna o path genérico da rota atual
  * @param pathname Pathname da rota atual
  * @returns Path genérico da rota atual
  * @example
- * const genericPath = useMatchRouterPath('/model/123');
+ * const genericPath = matchRouterPath('/model/123');
  * console.log(genericPath); // /model/:modelId
  */
-export function useMatchRouterPath(pathname: string): string {
+function matchRouterPath(pathname: string): string {
   const match = matchRoutes(router.routes, pathname);
   if (!match?.length)
     throw new Error(
@@ -24,6 +24,18 @@ export function useMatchRouterPath(pathname: string): string {
       "Não foi possível encontrar o path genérico para a rota atual."
     );
   return genericPath;
+}
+
+/**
+ * @description Retorna uma função que consegue retornar o path genérico da rota atual
+ * @returns Função que retorna o path genérico da rota atual
+ * @example
+ * const matchRouterPath = useMatchRouterPath();
+ * const genericPath = matchRouterPath('/model/123');
+ * console.log(genericPath); // /model/:modelId
+ */
+export function useMatchRouterPath() {
+  return matchRouterPath;
 }
 
 interface constructRouteParams {
@@ -56,4 +68,24 @@ const constructRoute = ({ routerPath, params }: constructRouteParams) => {
  * */
 export function useConstructRoute() {
   return constructRoute;
+}
+
+/**
+ * @description Navega para uma rota com base no path e nos parâmetros passados
+ * @example const navigate = useNavigateWithConstructRoute();
+ * navigate('/model/:modelId', { modelId: 123 });
+ */
+export function useNavigateWithConstructRoute() {
+  const constructRoute = useConstructRoute();
+  const navigate = useNavigate();
+  return (fParams: {
+    routerPath: string;
+    params: Record<string, string | number>;
+  }) => {
+    const route = constructRoute({
+      routerPath: fParams.routerPath,
+      params: fParams.params,
+    });
+    navigate(route);
+  };
 }
