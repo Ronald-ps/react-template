@@ -1,5 +1,9 @@
 ## Setup
 ```shell
+# Seleciona a versão compatível do Node
+$ nvm use
+# Instala as dependências
+$ npm i
 # Copia arquivo contendo variáveis de ambiente
 $ cp .env.dev .env
 # Roda api mock
